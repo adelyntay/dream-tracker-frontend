@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import jwt_decode from "jwt-decode"
+import { useNavigate } from 'react-router-dom';
 
 export default function LoginForm() {
   const [login, setLogin] = useState({
@@ -7,9 +7,10 @@ export default function LoginForm() {
     password: "",
   });
   
+  const navigate = useNavigate();
   const handleSubmit = async (event) => {
     event.preventDefault();
-
+  
     try {
       const response = await fetch("/api/users/login", {
         method: "POST",
@@ -18,9 +19,14 @@ export default function LoginForm() {
         },
         body: JSON.stringify(login),
       });
-      const data = await response.json();
-      console.log(data);
-      localStorage.setItem("token", data)
+
+      if (response.ok) {
+        const data = await response.json();
+        localStorage.setItem("token", data.access_token);
+        navigate("/wall")
+      } else {
+        throw new Error("Invalid email or password");
+      }
     } catch (error) {
       console.error(error);
     }
