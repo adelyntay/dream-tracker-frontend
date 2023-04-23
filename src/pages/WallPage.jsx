@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import PublicPost from "../components/PublicPost"
+import PublicPost from "../components/Dreams/PublicPost"
 
 export default function WallPage() {
     return(

@@ -1,12 +1,15 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export default function CreateUserForm() {
   const [user, setUser] = useState({
-    name: "",
+    username: "",
     email: "",
     password: "",
   });
   
+  const navigate = useNavigate();
+
   const handleSubmit = async (event) => {
     event.preventDefault();
 
@@ -20,6 +23,7 @@ export default function CreateUserForm() {
       });
       const data = await response.json();
       console.log(data);
+      navigate("/login")
     } catch (error) {
       console.error(error);
     }
@@ -32,10 +36,10 @@ export default function CreateUserForm() {
   return (
     <form onSubmit={handleSubmit}>
       <label>
-        Name:
+        Username:
         <input
-          name="name"
-          value={user.name} required
+          name="username"
+          value={user.username} required
           onChange={handleChange}
         />
       </label>

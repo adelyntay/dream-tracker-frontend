@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import DeleteButton from "./DeletePost";
 
 export default function Wall() {
   const [posts, setPosts] = useState([]);
@@ -6,11 +8,8 @@ export default function Wall() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const token = localStorage.getItem("token");
         const response = await fetch("/api/posts/public", {
-          headers: {
-            Authorization: `bearer ${token}`,
-          },
+          method: "GET",
         });
 
         if (response.ok) {
@@ -25,22 +24,25 @@ export default function Wall() {
     }
 
     fetchData();
-}, []);
+  }, []);
 
-  const publicPosts = posts?.filter(post => post.is_public);
+  const publicPosts = posts?.filter((post) => post.is_public);
 
   return (
     <>
       {publicPosts && (
-      <ul>
-        {publicPosts.map(post => (
-          <li key={post._id}>
-            <h2>{post.title}</h2>
-            <p>{post.body}</p>
-            <p>{post.date}</p>
-          </li>
-        ))}
-      </ul>
+        <ul>
+          {publicPosts.map((post) => (
+            <li key={post._id}>
+              <Link to={`/posts/${post._id}`}>
+                <h2>{post.title}</h2>
+                <p>{post.body}</p>
+                <p>{new Date(post.date).toLocaleDateString()}</p>
+              </Link>
+          {/*<DeleteButton id={post._id} delPost={setPosts} /> */} 
+            </li>
+          ))}
+        </ul>
       )}
     </>
   );
