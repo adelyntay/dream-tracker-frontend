@@ -16,7 +16,7 @@ function App() {
       <Route path="/create" element={<CreateUserForm />} />
       <Route path="/login" element={<LoginPage />} />
       <Route path="/newpost" element={<NewDreamPage />} />
-      <Route path="/list" element={<DreamPage />} />
+      {/*<Route path="/list" element={<DreamPage />} />*/}
       <Route path="/posts/:id" element={<CommentsPage/>} />
       </Routes>
   )
