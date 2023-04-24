@@ -34,28 +34,31 @@ export default function LoginForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <label>
-        Email:
+    <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col justify-center items-center h-[35rem]">
+        <div>
         <input
           {...register("email", {
             required: true})}
           placeholder="Email"
+          className="my-4 w-full rounded-sm py-2 px-8 bg-black border-b-2 border-red"
         />    
         {errors.email && <p>Email is required</p>}
-      </label>
+        </div>  
 
-      <label>
-      Password:
+        <div>
       <input
           {...register("password", {
             required: true})}
+          type="password"
           placeholder="Password"
+          className="my-4 w-full rounded-sm py-2 px-8 bg-black border-b-2 border-red"
         />
-        {errors.email && <p>Password is required</p>}
-    </label>
+        {errors.password && <p>Password is required</p>}
+        </div>
 
-      <button type="submit">Login</button>
+        <div>
+      <button type="submit" className="rounded-md w-full py-2 px-8 mt-2 bg-orange">Login</button>
+      </div>
     </form>
   );
 }
