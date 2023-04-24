@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import DeleteButton from "./DeletePost";
 
 export default function Wall() {
   const [posts, setPosts] = useState([]);
@@ -30,20 +29,25 @@ export default function Wall() {
 
   return (
     <>
+    
       {publicPosts && (
         <ul>
+        
           {publicPosts.map((post) => (
+            <div className="flex flex-col justify-center border ">
             <li key={post._id}>
-              <Link to={`/posts/${post._id}`}>
-                <h2>{post.title}</h2>
-                <p>{post.body}</p>
+              <Link to={`/posts/${post._id}/comment`}>
+                <h2>Title: {post.title}</h2>
+                <p>Description: {post.body}</p>
                 <p>{new Date(post.date).toLocaleDateString()}</p>
               </Link>
-          {/*<DeleteButton id={post._id} delPost={setPosts} /> */} 
             </li>
+            </div>
           ))}
+          
         </ul>
       )}
+
     </>
   );
 }
