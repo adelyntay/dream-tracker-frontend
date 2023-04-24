@@ -29,13 +29,11 @@ export default function DreamLog () {
   return (
     <>
       {posts.map((post) => (
-        <div key={post._id}>
+        <div key={post._id} className="flex flex-col border">
         <Link to={`/posts/${post._id}`}>
-          <h2>{post.title}</h2>
-          <p>{post.body}</p>
-          <p>{post.type}</p>
-          <p>{post.quality}</p>
-          <p>{post.date}</p>
+          <h2>Title: {post.title}</h2>
+          <p>Sleep Quality: {post.quality}</p>
+          <p>{new Date(post.date).toLocaleDateString()}</p>
           </Link>
         </div>
       ))}

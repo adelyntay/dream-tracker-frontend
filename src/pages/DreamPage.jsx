@@ -6,8 +6,8 @@ export default function DreamPage() {
     return(
         <>
         <h1>All Dreams</h1>
-        <Link to ="/newpost"> New Post </Link>
-        <LogOut />
+        <div><Link to ="/newpost"><button className="rounded-md bg-orange px-2"> New Post </button></Link></div>
+        <div><LogOut /></div>
         <DreamLog />
         </>
     )

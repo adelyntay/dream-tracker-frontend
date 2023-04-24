@@ -5,12 +5,12 @@ export default function LogOut () {
     
     const handleLogout = async () => {
     localStorage.removeItem("token");
-    setUser(null);
-    navigate("/homepage");
+    navigate("/");
+    };
     return (
-        <button onClick={handleLogout}>Log Out</button>
+        <button onClick={handleLogout} className="rounded-md px-4 bg-pink">Log Out</button>
     )
     }
-}
+
 
 

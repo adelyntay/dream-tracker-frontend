@@ -5,7 +5,7 @@ export default function HomePage () {
     return(
         <>
         <h1>Homepage</h1>
-        <Link to ="/login"> Login </Link>
+        <Link to ="/login" className="font-bold"> Login </Link>
         <br />
         <Link to ="/create"> Sign Up </Link>
         </>
