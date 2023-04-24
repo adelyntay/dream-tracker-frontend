@@ -34,33 +34,41 @@ export default function CreateUserForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        Username:
+    <form onSubmit={handleSubmit} className="flex flex-col justify-center items-center h-[35rem]">
+        <div>
         <input
           name="username"
+          placeholder="Username"
           value={user.username} required
           onChange={handleChange}
-        />
-      </label>
-      <label>
-        Email:
+          className="my-4 w-full rounded-sm py-2 px-8 bg-black border-b-2 border-red"
+          />
+          </div>
+
+          <div>
         <input
           name="email"
+          placeholder="Email"
           value={user.email} required
           onChange={handleChange}
+          className="my-4 w-full rounded-sm py-2 px-8 bg-black border-b-2 border-red"
         />
-      </label>
-      <label>
-      Password:
+        </div>
+
+        <div>
       <input
         name="password"
+        type="password"
+        placeholder="Password"
         value={user.password} required
         onChange={handleChange}
+        className="my-4 w-full rounded-sm py-2 px-8 bg-black border-b-2 border-red"
       />
-    </label>
-      <button type="submit">Create User</button>
-    </form>
+      </div>
+      <div>
+      <button type="submit" className="rounded-md w-full py-2 px-8 mt-2 bg-orange">Create User</button>
+      </div>  
+      </form>
   );
 }
 
