@@ -1,10 +1,16 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
+import ReactPaginate from "react-paginate"
 
 export default function Wall() {
   const [posts, setPosts] = useState([]);
+  const [pageNumber, setPageNumber] = useState(0);
+  const postsPerPage = 5;
+  const ref = useRef(null);
 
   useEffect(() => {
+    let isMounted = true;
+
     async function fetchData() {
       try {
         const response = await fetch("/api/posts/public", {
@@ -13,7 +19,9 @@ export default function Wall() {
 
         if (response.ok) {
           const data = await response.json();
+          if(isMounted) {
           setPosts(data);
+          }
         } else {
           throw new Error("Failed to fetch posts.");
         }
@@ -23,31 +31,60 @@ export default function Wall() {
     }
 
     fetchData();
+
+    return () => {
+      isMounted = false;
+    }
   }, []);
 
   const publicPosts = posts?.filter((post) => post.is_public);
+  const pageCount = Math.ceil(publicPosts.length / postsPerPage);
+
+  const handlePageClick = ({ selected }) => {
+    setPageNumber(selected);
+    ref.current.scrollTo(0, 0);
+  };
+
+  const displayPosts = publicPosts
+    .slice(pageNumber * postsPerPage, (pageNumber + 1) * postsPerPage)
+    .map((post) => (
+      <div className="w-[25rem]">
+        <div key={post._id} className="border-2 border-pink rounded-md p-2 mb-2">
+          <Link to={ `/posts/${post._id}/comment`}>
+            <h2 className="card-title text-orange pb-4">{post.title}</h2>
+            <p className="text-center">{post.body}</p>
+            <p className="text-right text-sm">{new Date(post.date).toLocaleDateString()}</p>
+          </Link>
+        </div>
+      </div>
+    ));
 
   return (
     <>
-    
-      {publicPosts && (
-        <ul>
-        
-          {publicPosts.map((post) => (
-            <div className="flex flex-col justify-center border ">
-            <li key={post._id}>
-              <Link to={`/posts/${post._id}/comment`}>
-                <h2>Title: {post.title}</h2>
-                <p>Description: {post.body}</p>
-                <p>{new Date(post.date).toLocaleDateString()}</p>
-              </Link>
-            </li>
-            </div>
-          ))}
-          
-        </ul>
+      {displayPosts && (
+        <div>
+          <ul className="grid col-start-2" ref={ref}>{displayPosts}</ul>
+          <ReactPaginate 
+            previousLabel={"previous"}
+            nextLabel={"next"}
+            breakLabel={"..."}
+            pageCount={pageCount}
+            onPageChange={handlePageClick}
+            containerClassName={"btn-group"}
+            previousLinkClassName={"previous_page bg-blue-500 "}
+            nextLinkClassName={"next_page"}
+            disabledClassName={"disabled"}
+            activeClassName={"active"}
+          />
+        </div>
       )}
-
     </>
   );
 }
+
+
+
+
+
+
+
