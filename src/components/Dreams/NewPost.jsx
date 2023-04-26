@@ -2,8 +2,6 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import DatePicker from "react-datepicker"
 import "react-datepicker/dist/react-datepicker.css"
-{/*import data from '@emoji-mart/data'
-import Picker from '@emoji-mart/react'*/}
 
 export default function NewPost() {
   const [title, setTitle] = useState("");
@@ -52,58 +50,68 @@ export default function NewPost() {
 
   return (
     <>
-      <form onSubmit={handleSubmit} className="flex flex-col justify-center items-center">
+      <div className="card-body">
+      
+      <form onSubmit={handleSubmit}>
 
-      <div>
-      <label className="text-pink">Date</label>
+      <div className="form-control">
+      <label>Date
       <DatePicker 
         showIcon selected={startDate} 
         onChange={(date) => setStartDate(date)}
-        className="bg-black border-b-2 border-red"/>
+        className="text-black"/>
+      </label>
       </div>
-
-      <div>
-        <label className="text-pink">Title</label>
+      <br />
+      
+      <div className="form-control">
+        <label>Title</label>
         <input
           type="text"
           id="title"
           value={title}
           onChange={(event) => setTitle(event.target.value)}
-          className="bg-black border-b-2 border-red"
+          className="bg-black border-b-2 border-red py-2"
+          required
         />
-      </div>
-
-      <div>
-        <label className="text-pink pr-7">Description</label>
+        </div>
+ 
+      <br />
+        <div className="form-control">
+        <label>Description</label>
         <textarea
           id="description"
           value={description}
           onChange={(event) => setDescription(event.target.value)}
-          className="bg-black border-b-2 border-red"
+          className="bg-black border-b-2 border-red py-2"
+          required
         />
-      </div>
-
-      <div>
-        <label className="text-pink">Type</label>
-
+        </div>
+    <br/>
+      <div className="form-control">
+        <label>Type </label>
           <label>
             <input
               type="radio"
               name="type"
-              value="normal"
-              checked={type === "normal"}
-              onChange={(event) => setType(event.target.value)}
+              value="Normal"
+              checked={type === "Normal"}
+              onChange={(event) => setType(event.target.value)} 
+              className="radio-sm"
+              required
             />
-            Normal
+            Normal 
           </label>
 
           <label>
             <input
               type="radio"
               name="type"
-              value="lucid"
-              checked={type === "lucid"}
+              value="Lucid"
+              checked={type === "Lucid"}
               onChange={(event) => setType(event.target.value)}
+              className="radio-sm"
+              required
             />
             Lucid
           </label>
@@ -112,37 +120,42 @@ export default function NewPost() {
             <input
               type="radio"
               name="type"
-              value="false awakening"
-              checked={type === "false awakening"}
+              value="Recurring"
+              checked={type === "Recurring"}
               onChange={(event) => setType(event.target.value)}
+              className="radio-sm"
+              required
             />
-            False Awakening
+            Recurring
           </label>
 
           <label>
             <input
               type="radio"
               name="type"
-              value="nightmare"
-              checked={type === "nightmare"}
+              value="Nightmare"
+              checked={type === "Nightmare"}
               onChange={(event) => setType(event.target.value)}
+              className="radio-sm"
+              required
             />
             Nightmare
           </label>
-
       </div>
    
-
-      <div>
-        <label className="text-pink">Sleep Quality</label>
+    <br />
+      <div className="form-control">
+        <label>Sleep Quality</label>
          
         <label>
           <input
             type="radio"
             name="quality"
-            value="good"
-            checked={quality === "good"}
+            value="Good"
+            checked={quality === "Good"}
             onChange={(event) => setQuality(event.target.value)}
+            className="radio-sm"
+            required
           />
           Good
         </label>
@@ -151,9 +164,11 @@ export default function NewPost() {
           <input
             type="radio"
             name="quality"
-            value="average"
-            checked={quality === "average"}
+            value="Average"
+            checked={quality === "Average"}
             onChange={(event) => setQuality(event.target.value)}
+            className="radio-sm"
+            required
           />
           Average
         </label>
@@ -162,28 +177,33 @@ export default function NewPost() {
           <input
             type="radio"
             name="quality"
-            value="poor"
-            checked={quality === "poor"}
+            value="Poor"
+            checked={quality === "Poor"}
             onChange={(event) => setQuality(event.target.value)}
+            className="radio-sm"
+            required
           />
           Poor
         </label>
-
       </div>
 
-      <div>
-        <label className="text-pink">Privacy</label>
-        <input type="checkbox" checked={isPublic} onChange={(event) => setIsPublic(event.target.checked)} />
-        <span>{isPublic ? "Public" : "Private"}</span>
+      <div className="form-control">
+      <label>Privacy 
+        <input 
+          type="checkbox" 
+          checked={isPublic} 
+          onChange={(event) => setIsPublic(event.target.checked)} 
+          className="checkbox-sm m-2"
+          />{isPublic ? "Public" : "Private"}
+          </label>
       </div>
-        
-       {/*} <div>
-          <label>Wake Up Feeling Like:</label>
-          <Picker data={data} categories={["people"]}/>
-  </div>*/}
 
-      <button type="submit" className="rounded-md  py-2 px-8 mt-2 bg-orange">Create Post</button>
+      <div className="form-control">
+      <button type="submit" className="rounded-md py-2 px-8 mt-2 bg-orange">Create Post</button>
+      </div>
       </form>
+      </div>
+     
     </>
   );
 }

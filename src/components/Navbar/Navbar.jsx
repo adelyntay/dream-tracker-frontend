@@ -6,8 +6,9 @@ export default function NavBar () {
 
 <div className="navbar bg-base-100">
 <div className="flex-1">
-    
-  </div>
+
+<p className="btn btn-ghost text-orange text-xl">Dream Journal</p>
+</div>
   <div className="flex-none">
     <ul className="menu menu-horizontal px-1">
       <li className="hover:bg-pink rounded-md"><Link to ="/newpost">New Post</Link></li>

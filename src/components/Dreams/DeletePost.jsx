@@ -26,7 +26,7 @@ export default function DeleteButton({ id, delPost }) {
   };
 
   return (
-    <button onClick={handleDelete} disabled={deleting} className="rounded-md bg-red px-4">
+    <button onClick={handleDelete} disabled={deleting} className="btn border-none bg-orange text-black hover:text-white">
       {deleting ? 'Deleting...' : 'Delete Post'}
     </button>
   );

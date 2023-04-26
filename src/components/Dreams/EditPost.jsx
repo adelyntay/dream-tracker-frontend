@@ -72,47 +72,57 @@ export default function EditPost() {
 
     return(
       <>
+      <div className="card-body">
 
       <form onSubmit={handleSubmit(onSubmit)}>
 
-      <label className="text-pink">Date:</label>
+      <div className="form-control">
+      <label>Date:
       <Controller
         name="date"
         control={control}
-        defaultValue={post.date}
+        rules={{ required: true }}
         render={({ field: { onChange, value } }) => (
           <DatePicker
+            defaultValue={post.date}
             selected={value}
             onChange={onChange}
             showIcon
-            className="bg-black border-b-2 border-red"
+            className="text-black"
           />
         )}
       />
-      {errors.date && <p>Date is required</p>}
-      
+      {errors.date && <p className="text-pink">Date is required</p>}
+      </label>
+      </div>
+      <br/>
 
+      <div className="form-control">
       <label>Title:</label>
         <input
           {...register("title", {
             required: true})}
           defaultValue={post.title}
-          className="bg-black border-b-2 border-red"
+          className="bg-black border-b-2 border-red py-2"
         />    
-        {errors.title && <p>Title is required</p>}
-        
+        {errors.title && <p className="text-pink">Title is required</p>}
+       </div>   
+       <br />
 
-      <label>Description:</label>
+       <div className="form-control">
+       <label>Description:</label>
         <input
           {...register("description", {
             required: true})}
           defaultValue={post.body}
-          className="bg-black border-b-2 border-red"
+          className="bg-black border-b-2 border-red py-2"
         />    
-        {errors.description && <p>Description is required</p>}
-        
+        {errors.description && <p className="text-pink">Description is required</p>}
+       </div>
+       <br/>
 
-      <label className="text-pink">Type</label>
+       <div className="form-control">
+       <label>Type</label>
 
         <Controller
           name="type"
@@ -124,56 +134,68 @@ export default function EditPost() {
               <label>
                 <input
                   type="radio"
-                  value="normal"
-                  checked={value === "normal"}
+                  value="Normal"
+                  checked={value === "Normal"}
                   onChange={onChange}
+                  className="radio-sm"
                 />
                 Normal
               </label>
               <label>
                 <input
                   type="radio"
-                  value="lucid"
-                  checked={value === "lucid"}
+                  value="Lucid"
+                  checked={value === "Lucid"}
                   onChange={onChange}
+                  className="radio-sm"
                 />
                 Lucid
               </label>
               <label>
                 <input
                   type="radio"
-                  value="false awakening"
-                  checked={value === "false awakening"}
+                  value="Recurring"
+                  checked={value === "Recurring"}
                   onChange={onChange}
+                  className="radio-sm"
                 />
-                False Awakening
+                Recurring
               </label>
               <label>
                 <input
                   type="radio"
-                  value="nightmare"
-                  checked={value === "nightmare"}
+                  value="Nightmare"
+                  checked={value === "Nightmare"}
                   onChange={onChange}
+                  className="radio-sm"
                 />
                 Nightmare
+                
               </label>
-              {errors.type && <p>Type is required</p>}
-
-          
-        <label className="text-pink">Sleep Quality</label>
+              
+              {errors.type && <p className="text-pink">Type is required</p>}
+              </>
+              )}
+              />
+        </div>
+      
+        <div className="form-control">
+        <label>Sleep Quality</label>
 
         <Controller
           name="quality"
           control={control}
           defaultValue={post.quality}
+          rules={{required: true}}
           render={({ field: { onChange, value } }) => (
             <>
               <label>
                 <input
                   type="radio"
-                  value="good"
-                  checked={value === "good"}
+                  value="Good"
+                  checked={value === "Good"}
                   onChange={onChange}
+                  className="radio-sm"
                 />
                 Good
               </label>
@@ -181,9 +203,10 @@ export default function EditPost() {
               <label>
                 <input
                   type="radio"
-                  value="average"
-                  checked={value === "average"}
+                  value="Average"
+                  checked={value === "Average"}
                   onChange={onChange}
+                  className="radio-sm"
                 />
                 Average
               </label>
@@ -191,38 +214,48 @@ export default function EditPost() {
               <label>
                 <input
                   type="radio"
-                  value="poor"
-                  checked={value === "poor"}
+                  value="Poor"
+                  checked={value === "Poor"}
                   onChange={onChange}
+                  className="radio-sm"
                 />
                 Poor
               </label>
-              {errors.quality && <p>Sleep Quality is required</p>}
-            </>
+              {errors.quality && <p className="text-pink">Sleep Quality is required</p>}
+              
+              </>
+              
           )}
         />
+        </div> 
 
-
-      <div>
-        <label className="text-pink">Privacy</label>
+      <div className="form-control">
+        <label>Privacy
         <Controller
           name="isPublic"
           control={control}
           defaultValue={post.isPublic}
           render={({ field: { onChange, value } }) => (
-            <div>
-              <input type="checkbox" checked={value} onChange={onChange} />
-              <span>{value ? "Public" : "Private"}</span>
-            </div>
+            <span>
+              <input 
+                type="checkbox" 
+                checked={value} 
+                onChange={onChange} 
+                className="checkbox-sm m-2"
+                />
+              {value ? "Public" : "Private"}
+            </span>
           )}
         />
+        </label>
       </div>
-
-      <button type="submit">Submit</button>
-            </>
-          )}
-        />
+      
+      <div className="form-control">
+      <button type="submit" className="rounded-md py-2 px-8 mt-2 bg-orange">Save Changes</button>
+      </div>
       </form>
+       </div>
+     
 </>
     )
           }

@@ -6,3 +6,18 @@ body {
     background-color: black;
     color: #fffffe;
   }
+
+.btn-group {
+  color: #CCD5DD; 
+  background-color: #444444; 
+  padding: 0.5rem 1rem; /* Set the padding */
+  margin: 0.5rem 1rem;
+  border-radius: 0.2rem;
+  cursor: pointer; /* Set the cursor to a pointer on hover */
+}
+.active {
+  color: #e53170; 
+  padding: 0.5rem 1rem; /* Set the padding */
+  cursor: pointer; /* Set the cursor to a pointer on hover */
+}
+
