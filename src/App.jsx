@@ -7,7 +7,8 @@ import WallPage from "./pages/WallPage";
 import CommentsPage from "./pages/CommentsPage";
 import InfoPage from "./pages/InfoPage";
 import EditPage from "./pages/EditPage";
-import SignUpPage from "./pages/SignUpPage"
+import SignUpPage from "./pages/SignUpPage";
+import StatsPage from "./pages/StatsPage";
 function App() {
 
   return (
@@ -21,6 +22,7 @@ function App() {
       <Route path="/posts/:id/comment" element={<CommentsPage/>} />
       <Route path="/posts/:id" element={<InfoPage/>} />
       <Route path="/posts/:id/edit" element={<EditPage />} />
+      <Route path="/chart" element={<StatsPage />} />
     </Routes>
   )
 }

@@ -14,6 +14,7 @@ export default function NavBar () {
       <li className="hover:bg-pink rounded-md"><Link to ="/newpost">New Post</Link></li>
       <li className="hover:bg-pink rounded-md"><Link to ="/wall">Wall</Link></li>
       <li className="hover:bg-pink rounded-md"><Link to ="/posts">My Post</Link></li>
+      <li className="hover:bg-pink rounded-md"><Link to ="/chart">Stats</Link></li>
       <li className="hover:bg-pink rounded-md"><LogOut /></li>
     </ul>
   </div>
