@@ -24,11 +24,13 @@ export default function EditPost() {
 
   const navigate = useNavigate();
 
+  const backendUrl = process.env.REACT_APP_BACKEND_URL; 
+
   useEffect(() => {
     const fetchData = async () => {
       try {
         const token = localStorage.getItem("token");
-        const response = await fetch(`/api/posts/${id}`, {
+        const response = await fetch(`${backendUrl}/posts/${id}`, {
           headers: { 
             "Authorization": `Bearer ${token}`,
           },
@@ -51,7 +53,7 @@ export default function EditPost() {
   const onSubmit = async (data) => {
     try {
       const token = localStorage.getItem("token");
-      const response = await fetch(`/api/posts/${id}`, {
+      const response = await fetch(`${backendUrl}/posts/${id}`, {
         method: "PUT",
         headers: { 
           "Content-Type": "application/json", 

@@ -5,6 +5,7 @@ import Chart from "chart.js/auto"
 export default function ChartData() {
   const [data, setData] = useState({});
   const [selectedMonth, setSelectedMonth] = useState(1);
+  const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
   useEffect(() => {
     fetchData(selectedMonth);
@@ -13,7 +14,7 @@ export default function ChartData() {
   async function fetchData(month) {
     try {
       const token = localStorage.getItem("token");
-      const response = await fetch(`/api/data?month=${month}`, {
+      const response = await fetch(`${backendUrl}/data?month=${month}`, {
         method: "GET",
         headers: {
           "Authorization": `Bearer ${token}`,

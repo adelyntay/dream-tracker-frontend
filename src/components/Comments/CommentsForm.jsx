@@ -12,11 +12,13 @@ export default function CommentsForm () {
     } = useForm();
 
     const [comments, setComments] = useState([]);
+
+    const backendUrl = process.env.REACT_APP_BACKEND_URL;
     
     const onSubmit = async (data) => {
         try {
             const token = localStorage.getItem("token")
-            const response = await fetch(`/api/posts/${id}/comments`, {
+            const response = await fetch(`${backendUrl}/posts/${id}/comments`, {
                 method: "POST",
                 headers: {
                   "Content-Type": "application/json",
@@ -35,7 +37,7 @@ export default function CommentsForm () {
 
     const getComments = async () => {
         try {
-          const response = await fetch(`/api/posts/${id}/comments`);
+          const response = await fetch(`${backendUrl}/posts/${id}/comments`);
           if (response.ok) {
             const responseData = await response.json();
             setComments(responseData);

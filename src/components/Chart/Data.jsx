@@ -3,12 +3,13 @@ import { useState, useEffect } from "react";
 export default function Data() {
   const [data, setData] = useState([]);
   const [dreamCounts, setDreamCounts] = useState({});
+  const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
   useEffect(() => {
     async function fetchPost() {
       try {
         const token = localStorage.getItem("token");
-        const response = await fetch("/api/dreams", {
+        const response = await fetch(`${backendUrl}/dreams`, {
           method: "GET",
           headers: {
             "Authorization": `Bearer ${token}`,
