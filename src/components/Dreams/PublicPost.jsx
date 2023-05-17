@@ -8,7 +8,7 @@ export default function Wall() {
   const postsPerPage = 5;
   const ref = useRef(null);
   // const backendUrl = process.env.REACT_APP_BACKEND_URL;
-  const backendUrl = "/api";
+  // const backendUrl = "/api";
 
   useEffect(() => {
     let isMounted = true;
@@ -16,7 +16,8 @@ export default function Wall() {
     async function fetchData() {
       try {
         // const response = await fetch("/api/posts/public", {
-        const response = await fetch(`${backendUrl}/posts/public`, {
+        // const response = await fetch(`${backendUrl}/posts/public`, {
+          const response = await fetch(`/posts/public`, {
           method: "GET",
         });
 

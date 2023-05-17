@@ -4,14 +4,15 @@ export default function Data() {
   const [data, setData] = useState([]);
   const [dreamCounts, setDreamCounts] = useState({});
   // const backendUrl = process.env.REACT_APP_BACKEND_URL;
-  const backendUrl = "/api";
+  // const backendUrl = "/api";
 
   useEffect(() => {
     async function fetchPost() {
       try {
         const token = localStorage.getItem("token");
         // const response = await fetch("/api/dreams", {
-        const response = await fetch(`${backendUrl}/dreams`, {
+        // const response = await fetch(`${backendUrl}/dreams`, {
+          const response = await fetch(`/dreams`, {
           method: "GET",
           headers: {
             "Authorization": `Bearer ${token}`,

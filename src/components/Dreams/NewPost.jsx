@@ -14,7 +14,7 @@ export default function NewPost() {
 
   const navigate = useNavigate();
   // const backendUrl = process.env.REACT_APP_BACKEND_URL;
-  const backendUrl = "/api";
+  // const backendUrl = "/api";
   
   const handleSubmit = async (event) => {
   event.preventDefault();
@@ -22,7 +22,8 @@ export default function NewPost() {
     try {
         const token = localStorage.getItem("token")
         // const response = await fetch("/api/posts/create", {
-        const response = await fetch(`${backendUrl}/posts/create`, {
+        // const response = await fetch(`${backendUrl}/posts/create`, {
+          const response = await fetch(`/posts/create`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

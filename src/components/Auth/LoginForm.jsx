@@ -11,12 +11,13 @@ export default function LoginForm() {
 
   const navigate = useNavigate();
   // const backendUrl = process.env.REACT_APP_BACKEND_URL;
-  const backendUrl = "/api";
+  // const backendUrl = "/api";
 
   const onSubmit = async (data) => {
     try {
       // const response = await fetch("/api/users/login", {
-      const response = await fetch(`${backendUrl}/users/login`, {
+      // const response = await fetch(`${backendUrl}/users/login`, {
+        const response = await fetch(`/users/login`, {
         method: "POST",
         headers: { 
           "Content-Type": "application/json", 

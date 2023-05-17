@@ -5,13 +5,14 @@ export default function DeleteButton({ id, delPost }) {
   const [deleting, setDeleting] = useState(false);
   const navigate = useNavigate()
   // const backendUrl = process.env.REACT_APP_BACKEND_URL;
-  const backendUrl = "/api";
+  // const backendUrl = "/api";
   
   const handleDelete = async () => {
     setDeleting(true);
     try {
       // const response = await fetch(`/api/posts/${id}`, {
-      const response = await fetch(`${backendUrl}/posts/${id}`, {
+      // const response = await fetch(`${backendUrl}/posts/${id}`, {
+        const response = await fetch(`/posts/${id}`, {
         method: 'DELETE',
         headers:{
             "Content-Type" :"application/json",
