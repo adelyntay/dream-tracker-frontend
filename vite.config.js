@@ -9,7 +9,13 @@ export default defineConfig({
   plugins: [react()],
   server: {
     proxy: {
-      "/api": process.env.SERVER,
-    }
-  }
-})
+      // "/api": process.env.SERVER,
+      // "/api": "http://127.0.0.1:5000",
+      "/api": {
+        target: process.env.REACT_APP_BACKEND_URL,
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, ''),
+      },
+    },
+  },
+});

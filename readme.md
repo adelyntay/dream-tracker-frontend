@@ -62,3 +62,4 @@ All rights belong to the original artists and owners.
 <a href="https://giphy.com/MelioPayments/">Giphy</a><br/>
 <a href="https://giphy.com/simianreflux">Giphy</a><br/>
 <a href="https://giphy.com/search/tony-babel">Giphy</a><br/>
+<a href="https://www.bettersleep.com/blog/dream-journal/">Introductory paragraph on benefits of dream journal</a>

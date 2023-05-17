@@ -9,12 +9,14 @@ export default function CreateUserForm() {
   });
   
   const navigate = useNavigate();
-  const backendUrl = process.env.REACT_APP_BACKEND_URL;
+  // const backendUrl = process.env.REACT_APP_BACKEND_URL;
+  const backendUrl = "/api";
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     try {
+      // const response = await fetch("/api/users", {
       const response = await fetch(`${backendUrl}/users`, {
         method: "POST",
         headers: { 
