@@ -6,16 +6,12 @@ export default function DreamLog () {
   const [posts, setPosts] = useState([]);
   const [pageNumber, setPageNumber] = useState(0);
   const dreamsPerPage = 5;
-  // const backendUrl = process.env.REACT_APP_BACKEND_URL;
-  // const backendUrl = "/api";
 
   useEffect(() => {
     async function fetchPosts() {
       try {
         const token = localStorage.getItem("token");
-        // const response = await fetch("/api/posts", {
-        // const response = await fetch(`${backendUrl}/posts`, {
-          const response = await fetch(`/posts`, {
+        const response = await fetch("/api/posts", {
           method: "GET",
           headers: {
             "Authorization": `Bearer ${token}`,

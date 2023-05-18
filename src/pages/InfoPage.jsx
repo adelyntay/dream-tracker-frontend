@@ -6,16 +6,12 @@ import Navbar from "../components/Navbar/Navbar"
 export default function PostDetails() {
   const { id } = useParams();
   const [post, setPost] = useState();
-  // const backendUrl = process.env.REACT_APP_BACKEND_URL;
-  // const backendUrl = "/api";
 
   useEffect(() => {
     async function fetchPost() {
       try {
         const token = localStorage.getItem("token");
-        // const response = await fetch(`/api/posts/${id}`, {
-        // const response = await fetch(`${backendUrl}/posts/${id}`, {
-          const response = await fetch(`/posts/${id}`, {
+        const response = await fetch(`/api/posts/${id}`, {
           method: "GET",
           headers: {
             "Authorization": `Bearer ${token}`,

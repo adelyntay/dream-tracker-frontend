@@ -7,17 +7,13 @@ export default function Wall() {
   const [pageNumber, setPageNumber] = useState(0);
   const postsPerPage = 5;
   const ref = useRef(null);
-  // const backendUrl = process.env.REACT_APP_BACKEND_URL;
-  // const backendUrl = "/api";
 
   useEffect(() => {
     let isMounted = true;
 
     async function fetchData() {
       try {
-        // const response = await fetch("/api/posts/public", {
-        // const response = await fetch(`${backendUrl}/posts/public`, {
-          const response = await fetch(`/posts/public`, {
+        const response = await fetch("/api/posts/public", {
           method: "GET",
         });
 
